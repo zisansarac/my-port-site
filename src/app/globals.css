@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* 1. ÖZEL FONT TANIMLARI (Pixel/Retro fontlarınızı buraya ekleyin) */
+@font-face {
+  font-family: 'Pixel-Kawaii';
+  src: url('/fonts/VT323-Regular.woff2') format('woff2'); 
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Retro-Digital';
+  src: url('/fonts/PressStart2P-Regular.woff2') format('woff2'); 
+  font-weight: 400;
+  font-style: normal;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 2. BODY VE GENEL KAYDIRMA STİLLERİ */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Genel Arka Plan Rengi */
+  background-color: theme('colors.gray.900');
+  
+  /* Referans sitedeki gibi tam ekran bölümler arası yumuşak kilitlenme */
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  
+  /* Varsayılan Metin Rengi ve Fontu */
+  font-family: theme('fontFamily.sans');
+  color: theme('colors.gray.100'); 
+}
+
+/* 3. BAŞLIK FONTU (Pixel Art Etkisi) */
+h1, h2, h3, h4 {
+  font-family: 'Pixel-Kawaii', sans-serif;
+  font-weight: 500; 
+  color: theme('colors.indigo.500');
+}
+
+p {
+  font-family: 'Pixel-Kawaii', sans-serif;
+  font-weight: 500; 
+  color: theme('colors.pink.400');
+}
+
+/* 4. HAMBURGER İKONU TEMEL STİLİ */
+.burger-line {
+  @apply block w-6 h-0.5 my-1 bg-blue-400 transition duration-300 ease-in-out;
 }
