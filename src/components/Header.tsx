@@ -1,12 +1,17 @@
 
 // src/components/Header.tsx
 'use client'; 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { HiMenu, HiX } from 'react-icons/hi'; // react-icons kurulu olmalı
+import { HiMenu, HiX } from 'react-icons/hi';
+import gsap from 'gsap';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const logoRef = useRef<HTMLAnchorElement>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const menuItems = [
     { name: 'Hakkımda', href: '#about' },
@@ -14,46 +19,183 @@ const Header = () => {
     { name: 'İletişim', href: '#contact' },
   ];
 
+  // Header slide down animation on mount
+  useEffect(() => {
+    if (typeof window === 'undefined' || !headerRef.current) return;
+
+    gsap.fromTo(
+      headerRef.current,
+      { y: -100, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
+    );
+  }, []);
+
+  // Logo animation
+  useEffect(() => {
+    if (typeof window === 'undefined' || !logoRef.current) return;
+
+    const logo = logoRef.current;
+    
+    const handleMouseEnter = () => {
+      gsap.to(logo, {
+        scale: 1.1,
+        rotation: 5,
+        duration: 0.3,
+        ease: 'back.out(1.7)'
+      });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(logo, {
+        scale: 1,
+        rotation: 0,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    };
+
+    logo.addEventListener('mouseenter', handleMouseEnter);
+    logo.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      logo.removeEventListener('mouseenter', handleMouseEnter);
+      logo.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
+  // Menu items stagger animation
+  useEffect(() => {
+    if (typeof window === 'undefined' || !navRef.current) return;
+
+    const items = menuItemsRef.current.filter(Boolean);
+    if (items.length === 0) return;
+
+    gsap.fromTo(
+      items,
+      {
+        opacity: 0,
+        y: -20,
+        scale: 0.8
+      },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+        stagger: 0.1,
+        delay: 0.3,
+        ease: 'back.out(1.7)'
+      }
+    );
+  }, []);
+
+  // Mobile menu animation
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const mobileNav = document.querySelector('.mobile-nav');
+    if (!mobileNav) return;
+
+    if (isOpen) {
+      gsap.fromTo(
+        mobileNav,
+        { height: 0, opacity: 0 },
+        { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' }
+      );
+
+      const menuLinks = mobileNav.querySelectorAll('li');
+      gsap.fromTo(
+        menuLinks,
+        { x: -50, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.3, stagger: 0.1, delay: 0.2, ease: 'power2.out' }
+      );
+    } else {
+      gsap.to(mobileNav, {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
+    }
+  }, [isOpen]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
+    const link = menuItemsRef.current[index];
+    if (link) {
+      gsap.to(link, {
+        scale: 0.9,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1,
+        ease: 'power2.inOut'
+      });
+    }
+  };
+
   return (
-    // 'fixed' ve 'z-50' ile üste sabitlenir. 'backdrop-blur' referans siteye benzer şeffaflık verir.
-    <header className="fixed top-0 left-0 w-full z-50 p-4 backdrop-blur-sm bg-bg-primary/80 border-b border-white/50">
+    <header 
+      ref={headerRef}
+      className="fixed top-0 left-0 w-full z-50 p-4 backdrop-blur-sm bg-bg-primary/80 border-b border-white/50"
+    >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        
         {/* Logo/Başlık */}
-        <Link href="/" className="font-mono text-text-accent text-3xl tracking-wider hover:text-kawaii-pink transition-colors duration-300">
-          <h2 className="hover:bg-pink-200">Zişan Saraç</h2>
+        <Link 
+          ref={logoRef}
+          href="/" 
+          className="font-mono text-text-accent text-3xl tracking-wider hover:text-kawaii-pink transition-colors duration-300 cursor-pointer"
+        >
+          <h2>Zişan Saraç</h2>
         </Link>
         
-        {/* Masaüstü Menüsü (Yuvarlak butonlar ekleyebiliriz) */}
-        <nav className="hidden md:flex space-x-4">
-          {menuItems.map((item) => (
+        {/* Masaüstü Menüsü */}
+        <nav ref={navRef} className="hidden md:flex space-x-4">
+          {menuItems.map((item, index) => (
             <Link 
               key={item.name} 
-              href={item.href} 
+              ref={(el) => { menuItemsRef.current[index] = el; }}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, index)}
               className="px-4 py-2 bg-pink-300 text-white rounded-full 
-                         hover:bg-indigo-300 transition-all duration-300 font-mono shadow-md"
+                         hover:bg-indigo-300 transition-all duration-300 font-mono shadow-md
+                         relative overflow-hidden group"
             >
-              {item.name}
+              <span className="relative z-10">{item.name}</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-kawaii-pink to-indigo-300 
+                             transform scale-x-0 group-hover:scale-x-100 transition-transform 
+                             duration-300 origin-left rounded-full"></span>
             </Link>
           ))}
         </nav>
 
         {/* Mobil Hamburger Butonu */}
-        <button className="md:hidden text-text-accent" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <HiX className='bg-indigo-400' size={30} /> : <HiMenu className='bg-indigo-400' size={30} />}
+        <button 
+          className="md:hidden text-text-accent p-1 rounded-md shadow-2000s 
+                     hover:scale-110 transition-transform duration-200"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <HiX className='bg-indigo-400' size={30} />
+          ) : (
+            <HiMenu className='bg-indigo-400' size={30} />
+          )}
         </button>
       </div>
 
       {/* Mobil Açılır Menü */}
       <nav 
-        className={`md:hidden absolute top-full left-0 w-full bg-bg-primary transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-screen opacity-100 p-4' : 'max-h-0 opacity-0 overflow-hidden'
-        }`}
+        className="mobile-nav md:hidden absolute top-full left-0 w-full bg-bg-primary overflow-hidden"
+        style={{ maxHeight: isOpen ? '500px' : '0' }}
       >
-        <ul className="flex flex-col space-y-3">
-          {menuItems.map((item) => (
+        <ul className="flex flex-col space-y-3 p-4">
+          {menuItems.map((item, index) => (
             <li key={item.name}>
-              <Link href={item.href} onClick={() => setIsOpen(false)} className="block text-text-default hover:text-text-accent text-xl py-2 px-4 rounded-lg bg-indigo-200">
+              <Link 
+                href={item.href} 
+                onClick={() => setIsOpen(false)} 
+                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
+                           rounded-lg bg-indigo-200 hover:bg-indigo-300 transition-colors 
+                           duration-300 transform hover:scale-105"
+              >
                 <p>{item.name}</p>
               </Link>
             </li>

@@ -19,9 +19,9 @@ body {
   /* Genel Arka Plan Rengi */
   background-color: theme('colors.gray.900');
   
-  /* Referans sitedeki gibi tam ekran bölümler arası yumuşak kilitlenme */
-  scroll-snap-type: y mandatory;
+  /* Smooth scrolling */
   scroll-behavior: smooth;
+  overflow-x: hidden;
   
   /* Varsayılan Metin Rengi ve Fontu */
   font-family: theme('fontFamily.sans');
@@ -44,4 +44,73 @@ p {
 /* 4. HAMBURGER İKONU TEMEL STİLİ */
 .burger-line {
   @apply block w-6 h-0.5 my-1 bg-blue-400 transition duration-300 ease-in-out;
+}
+
+/* 5. ANIMATION UTILITIES */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 192, 203, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 192, 203, 0.8);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* 6. SMOOTH TRANSITIONS */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* 7. SCROLLBAR STYLING */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.gray.800');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.pink.400');
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.pink.500');
 }
