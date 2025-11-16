@@ -96,49 +96,35 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   return (
     <div
       ref={cardRef}
-      className="group relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 
-                 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden
-                 border-2 border-transparent hover:border-kawaii-pink"
+      className="group relative overflow-hidden border-2 border-black dark:border-gray-500 bg-white dark:bg-gray-800 pixel-shadow hover:-translate-y-1 hover:-translate-x-1 transition-transform duration-150 active:translate-y-0 active:translate-x-0 active:shadow-none"
     >
-      {/* Decorative gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-kawaii-pink/20 to-indigo-300/20 
-                      opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
-      <div className="relative z-10">
-        {image && (
-          <div className="w-full h-48 bg-gradient-to-br from-kawaii-pink to-indigo-300 
-                          rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
-            <div className="text-6xl">📱</div>
-          </div>
-        )}
-        
-        <h3 className="text-3xl font-pixel text-text-accent mb-3">{title}</h3>
-        <p className="text-text-default mb-4 font-sans">{description}</p>
-        
-        <div className="flex flex-wrap gap-2 mb-4">
-          {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 bg-kawaii-pink/30 rounded-full text-sm font-sans 
-                         text-text-accent border border-kawaii-pink/50"
-            >
-              {tag}
-            </span>
-          ))}
+      {/* Image Area */}
+      <div className="aspect-square bg-cover bg-center bg-gradient-to-br from-pink-300 to-indigo-300 flex items-center justify-center overflow-hidden" style={{ imageRendering: 'pixelated' }}>
+        <div className="text-6xl">📱</div>
+      </div>
+
+      {/* Card Info */}
+      <div className="p-3 bg-white dark:bg-gray-800 border-t-2 border-black dark:border-gray-500">
+        <h3 className="font-mono text-sm text-black dark:text-white mb-2">{title}</h3>
+        <div className="flex flex-wrap gap-1">
+          {tags.map((tag, i) => {
+            const colors = ['bg-pink-300', 'bg-green-300', 'bg-blue-300', 'bg-yellow-300'];
+            const color = colors[i % colors.length];
+            return (
+              <span
+                key={i}
+                className={`text-xs font-bold ${color} text-black px-2 py-0.5 border border-black`}
+              >
+                {tag}
+              </span>
+            );
+          })}
         </div>
-        
-        {link && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-2 bg-kawaii-pink text-white rounded-full 
-                       font-mono hover:bg-indigo-300 transition-colors duration-300
-                       transform hover:scale-105"
-          >
-            View Project →
-          </a>
-        )}
+      </div>
+
+      {/* Hover Overlay */}
+      <div className="absolute inset-0 bg-pink-300/80 dark:bg-indigo-300/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+        <p className="font-mono text-2xl text-black">Görüntüle</p>
       </div>
     </div>
   );

@@ -114,3 +114,16 @@ p {
 ::-webkit-scrollbar-thumb:hover {
   background: theme('colors.pink.500');
 }
+
+/* 8. PIXEL SHADOW UTILITIES */
+.pixel-shadow {
+  box-shadow: 4px 4px 0px 0px rgba(16, 29, 34, 1);
+}
+
+.pixel-shadow-sm {
+  box-shadow: 2px 2px 0px 0px rgba(16, 29, 34, 1);
+}
+
+.pixel-shadow-inset {
+  box-shadow: inset -2px -2px 0 0 #b0bec5, inset 2px 2px 0 0 #ffffff;
+}

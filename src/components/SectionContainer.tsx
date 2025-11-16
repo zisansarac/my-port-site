@@ -81,16 +81,22 @@ const SectionContainer: React.FC<SectionProps> = ({ children, id, className = ''
       id={id} 
       className={`min-h-screen w-full flex flex-col items-center justify-center p-4 md:p-8 relative snap-start ${className}`}
     >
-      {/* Yuvarlak, şeffaf, gölgeli içerik kutusu (Stitch Referansı) */}
-      <div 
-        ref={contentRef}
-        className="max-w-7xl w-full p-8 md:p-12 
-                   bg-white/70 backdrop-blur-sm 
-                   rounded-[3rem] shadow-xl transition-all duration-300
-                   hover:shadow-2xl hover:scale-[1.02]"
-      >
-        {children}
-      </div>
+      {/* Conditionally render rounded container or just children */}
+      {className.includes('no-rounded-bg') ? (
+        <div ref={contentRef} className="w-full">
+          {children}
+        </div>
+      ) : (
+        <div 
+          ref={contentRef}
+          className="max-w-7xl w-full p-8 md:p-12 
+                     bg-white/70 backdrop-blur-sm 
+                     rounded-[3rem] shadow-xl transition-all duration-300
+                     hover:shadow-2xl hover:scale-[1.02]"
+        >
+          {children}
+        </div>
+      )}
     </section>
   );
 };
