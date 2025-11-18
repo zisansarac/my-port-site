@@ -330,8 +330,8 @@ export default function Home() {
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-sm sm:text-base flex-shrink-0">👋</span>
-                <span className="truncate">Merhaba.exe</span>
+                <span className="text-lg sm:text-base flex-shrink-0">🎵</span>
+                <p className="truncate text-lg">Merhaba.exe   °❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･</p>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -443,12 +443,13 @@ export default function Home() {
                   ref={skillsContainerRef as any}
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mt-4 sm:mt-8"
                 >
-                  <SkillCard skill="React/Next.js" level={90} icon="⚛️" color="pink" />
-                  <SkillCard skill="TypeScript" level={90} icon="📘" color="indigo" />
-                  <SkillCard skill="Tailwind & GSAP Animations" level={80} icon="🎨" color="purple" />
-                  <SkillCard skill=".NET" level={70} icon="💅" color="pink" />
-                  <SkillCard skill="Node.js" level={75} icon="🟢" color="indigo" />
-                  <SkillCard skill="Mobile Dev" level={40} icon="📱" color="purple" />
+                  <SkillCard skill="React/Next.js" level={90} icon="" color="pink" />
+                  <SkillCard skill="TypeScript" level={90} icon="" color="indigo" />
+                  <SkillCard skill="Tailwind & GSAP Animations" level={80} icon="" color="purple" />
+                  <SkillCard skill=".NET" level={70} icon="" color="pink" />
+                  <SkillCard skill="Node.js" level={75} icon="" color="indigo" />
+                  <SkillCard skill="Mobile Dev" level={40} icon="" color="purple" />
+                  
                 </div>
               </div>
             </div>

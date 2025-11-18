@@ -21,7 +21,7 @@ const AnimatedBackground = () => {
     // Create floating particles
     for (let i = 0; i < particleCount; i++) {
       const particle = document.createElement('div');
-      const size = Math.random() * 60 + 20;
+      const size = Math.random() * 80 + 50;
       const x = Math.random() * 100;
       const y = Math.random() * 100;
       
@@ -29,11 +29,11 @@ const AnimatedBackground = () => {
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
       particle.style.borderRadius = '50%';
-      particle.style.background = `radial-gradient(circle, rgba(255, 192, 203, ${0.1 + Math.random() * 0.2}) 0%, rgba(147, 51, 234, ${0.1 + Math.random() * 0.2}) 100%)`;
+      particle.style.background = `radial-gradient(circle, rgba(255, 192, 203, ${0.1 + Math.random() * 0.3}) 0%, rgba(147, 51, 234, ${0.1 + Math.random() * 0.3}) 100%)`;
       particle.style.left = `${x}%`;
       particle.style.top = `${y}%`;
       particle.style.pointerEvents = 'none';
-      particle.style.filter = 'blur(20px)';
+      particle.style.filter = 'blur(10px)';
       
       container.appendChild(particle);
       particles.push(particle);
@@ -42,7 +42,7 @@ const AnimatedBackground = () => {
       gsap.to(particle, {
         x: `+=${(Math.random() - 0.5) * 200}`,
         y: `+=${(Math.random() - 0.5) * 200}`,
-        duration: Math.random() * 10 + 10,
+        duration: Math.random() * 6 + 4,
         ease: 'sine.inOut',
         repeat: -1,
         yoyo: true,
@@ -65,7 +65,7 @@ const AnimatedBackground = () => {
   return (
     <div 
       ref={containerRef}
-      className="fixed inset-0 -z-10 overflow-hidden opacity-30"
+      className="fixed inset-0 -z-40 overflow-hidden opacity-100"
       aria-hidden="true"
     />
   );

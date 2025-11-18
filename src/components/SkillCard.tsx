@@ -80,8 +80,8 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, level, icon = '💻', colo
   return (
     <div
       ref={cardRef}
-      className={`p-6 rounded-3xl border-2 ${colorClasses[color as keyof typeof colorClasses] || colorClasses.pink} 
-                  bg-white/50 backdrop-blur-sm shadow-lg transition-all duration-300 cursor-pointer
+      className={`p-6  border-2 ${colorClasses[color as keyof typeof colorClasses] || colorClasses.pink} 
+                  bg-white/10 backdrop-blur-sm shadow-lg transition-all duration-300 cursor-pointer
                   hover:shadow-2xl`}
     >
       <div className="flex items-center gap-3 mb-4">
