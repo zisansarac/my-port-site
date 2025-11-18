@@ -29,9 +29,10 @@ const Header = () => {
   const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
   const menuItems = [
-    { name: 'Hakkımda', href: '#about' },
-    { name: 'Projeler', href: '#projects' },
-    { name: 'İletişim', href: '#contact' },
+    { name: 'About Me', href: '#about' },
+    { name: 'My Tech Stacks', href: '#tech' },
+    { name: 'My Projects', href: '#projects' },
+    { name: 'Contact Me', href: '#contact' },
   ];
 
   // Header slide down animation on mount

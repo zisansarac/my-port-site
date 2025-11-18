@@ -407,7 +407,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base flex-shrink-0">💖</span>
-                <span className="truncate">Hakkımda.txt</span>
+                <span className="truncate">aboutMe.txt</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -429,7 +429,52 @@ export default function Home() {
                   ref={aboutTitleRef}
                   className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white break-words"
                 >
-                  Hakkımda 💖
+                  About Me 💖
+                </h2>
+                <p 
+                  ref={aboutTextRef as any}
+                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono break-words"
+                >
+                  Merhaba! Ben bu dijital dünyanın yeni yaratıcısıyım. 2000lerin estetiği, parlak renkler ve yüksek interaktifliği birleştirerek özgün deneyimler tasarlamayı seviyorum.
+                </p>
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </SectionContainer>
+
+      <SectionContainer id="tech" className='snap-section no-rounded-bg'>
+        <div className="w-full flex justify-center items-center px-2 sm:px-4">
+          <div className="w-full max-w-5xl mx-auto border-2 border-black dark:border-gray-500 bg-white/90 dark:bg-gray-800 pixel-shadow overflow-hidden">
+            {/* Window Header */}
+            <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
+              <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+                <span className="text-sm sm:text-base flex-shrink-0">💖</span>
+                <span className="truncate">myTechStacks.txt</span>
+              </div>
+              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+                <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
+                  <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
+                </button>
+                <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
+                  <span className="text-black dark:text-white text-[8px] sm:text-xs">□</span>
+                </button>
+                <button className="w-4 h-4 sm:w-5 sm:h-5 bg-red-500 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-red-600">
+                  <span className="text-black text-[8px] sm:text-xs">×</span>
+                </button>
+              </div>
+            </header>
+
+            {/* Content Area */}
+            <div className="p-2 sm:p-4">
+              <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
+                <h2 
+                  ref={aboutTitleRef}
+                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white break-words"
+                >
+                  My Tech Stacks 💖
                 </h2>
                 <p 
                   ref={aboutTextRef as any}
@@ -465,7 +510,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base flex-shrink-0">📁</span>
-                <span className="truncate">Projelerim.exe</span>
+                <span className="truncate">myProjects.exe</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -483,45 +528,34 @@ export default function Home() {
             {/* Content Area */}
             <div className="p-2 sm:p-4">
               <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
-                {/* Filter Chips */}
-                <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6 font-mono text-[10px] sm:text-xs">
-                  <button className="h-7 sm:h-8 shrink-0 items-center justify-center gap-x-1 sm:gap-x-2 bg-pink-300 px-2 sm:px-3 text-black border-2 border-black pixel-shadow-sm hover:bg-yellow-300 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-transform">
-                    Tümü
-                  </button>
-                  <button className="h-7 sm:h-8 shrink-0 items-center justify-center gap-x-1 sm:gap-x-2 bg-indigo-300 px-2 sm:px-3 text-black border-2 border-black pixel-shadow-sm hover:bg-yellow-300 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-transform">
-                    Web Geliştirme
-                  </button>
-                  <button className="h-7 sm:h-8 shrink-0 items-center justify-center gap-x-1 sm:gap-x-2 bg-purple-300 px-2 sm:px-3 text-black border-2 border-black pixel-shadow-sm hover:bg-yellow-300 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-transform">
-                    Mobile
-                  </button>
-                  <button className="h-7 sm:h-8 shrink-0 items-center justify-center gap-x-1 sm:gap-x-2 bg-green-300 px-2 sm:px-3 text-black border-2 border-black pixel-shadow-sm hover:bg-yellow-300 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-transform">
-                    UI/UX
-                  </button>
-                </div>
+                
 
                 {/* Project Cards Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                   <ProjectCard
                     index={0}
-                    title="Portfolio Site"
-                    description="Modern ve interaktif portfolyo sitesi. GSAP animasyonları ve responsive tasarım ile geliştirildi."
-                    tags={['Next.js', 'GSAP', 'Tailwind', 'TypeScript']}
-                    link="#"
-                  />
+                    title="dahlia's"
+                    description="a modern and efficient order tracking application built to empower women entrepreneurs."
+                    tags={['Flutter', 'Node.js', 'Express', 'MySQL']}
+                    link="#" imageSrc={'/images/menu.jpg'} githubLink={'https://github.com/zisansarac/dahliasApp'}                  />
                   <ProjectCard
                     index={1}
-                    title="E-Commerce App"
+                    title="Portfolio Sites"
                     description="Full-stack e-ticaret uygulaması. Modern UI/UX ve güvenli ödeme entegrasyonu."
-                    tags={['React', 'Node.js', 'MongoDB', 'Stripe']}
-                    link="#"
-                  />
+                    tags={['React', '.NET', 'SQLite']}
+                    link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/PortfolioSites'}                  />
                   <ProjectCard
                     index={2}
-                    title="Mobile App"
-                    description="Cross-platform mobil uygulama. React Native ile geliştirildi."
-                    tags={['React Native', 'TypeScript', 'Firebase']}
-                    link="#"
-                  />
+                    title="GlowSphere"
+                    description="a sleek and modern platform designed to illuminate your digital presence with creativity and innovation."
+                    tags={['React', 'TypeScript', 'Tailwind CSS', 'Appwrite']}
+                    link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/glowsphere'}                  />
+                    <ProjectCard
+                    index={3}
+                    title="3D Web Portfolio"
+                    description="a interactive 3D Dev Portfolio a modern, animated and fully responsive experience built using React, Three.js, and GSAP."
+                    tags={['React', 'Three.js', 'GSAP']}
+                    link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/3D-Web-Portfolio'}                  />
                 </div>
               </div>
             </div>

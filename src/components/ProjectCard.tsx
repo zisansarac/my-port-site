@@ -4,6 +4,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,8 @@ type ProjectCardProps = {
   image?: string;
   link?: string;
   index: number;
+  imageSrc: string;
+  githubLink: string;
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
@@ -24,7 +27,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tags, 
   image, 
   link,
-  index 
+  index,
+  imageSrc,
+  githubLink 
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -94,40 +99,71 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   }, [index]);
 
   return (
-    <div
-      ref={cardRef}
-      className="group relative overflow-hidden border-2 border-black dark:border-gray-500 bg-white dark:bg-gray-800 pixel-shadow hover:-translate-y-1 hover:-translate-x-1 transition-transform duration-150 active:translate-y-0 active:translate-x-0 active:shadow-none"
-    >
-      {/* Image Area */}
-      <div className="aspect-square bg-cover bg-center bg-gradient-to-br from-pink-300 to-indigo-300 flex items-center justify-center overflow-hidden" style={{ imageRendering: 'pixelated' }}>
-        <div className="text-6xl">📱</div>
-      </div>
+ <div
+ ref={cardRef}
+ className="group relative overflow-hidden border-2 border-black dark:border-gray-500 bg-white dark:bg-gray-800 pixel-shadow"
+ >
 
-      {/* Card Info */}
-      <div className="p-3 bg-white dark:bg-gray-800 border-t-2 border-black dark:border-gray-500">
-        <h3 className="font-mono text-sm text-black dark:text-white mb-2">{title}</h3>
-        <div className="flex flex-wrap gap-1">
-          {tags.map((tag, i) => {
-            const colors = ['bg-pink-300', 'bg-green-300', 'bg-blue-300', 'bg-yellow-300'];
-            const color = colors[i % colors.length];
-            return (
-              <span
-                key={i}
-                className={`text-xs font-bold ${color} text-black px-2 py-0.5 border border-black`}
-              >
-                {tag}
-              </span>
-            );
-          })}
-        </div>
-      </div>
+ {/* GÖRSEL ALANI VE GİTHUB LİNKİ */}
+ <Link 
+href={githubLink} // GitHub linki burada
+target="_blank" 
+rel="noopener noreferrer"
+className="block relative overflow-hidden w-full h-48 md:h-56 lg:h-64" // Genişlik ve Yükseklik ayarı
+ >
+ {imageSrc ? (
+ <img
+    src={imageSrc}
+    alt={`${title} Proje Önizlemesi`}
+    className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-105"
+    style={{ imageRendering: 'pixelated' }} 
+ />
+ ) : (
+ // imageSrc boş ise gösterilecek yer tutucu
+<div className="w-full h-full bg-gradient-to-br from-pink-300 to-indigo-300 flex items-center justify-center">
+<span className="text-white font-mono p text-lg">No Image</span>
+ </div>
+ )}
 
-      {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-pink-300/80 dark:bg-indigo-300/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-        <p className="font-mono text-2xl text-black">Görüntüle</p>
-      </div>
-    </div>
-  );
+ {/*  GitHub */}
+<div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center">
+
+ <span className="text-white font-mono text-sm">GitHub</span>
+ </div>
+ </Link>
+
+ {/* Card Info (Açıklama alanı) */}
+ <div className="p-3 bg-white dark:bg-gray-800 border-t-2 border-black dark:border-gray-500">
+ <h3 className="font-mono text-2xl text-black dark:text-white mb-2 **truncate**">{title}</h3>
+<p className="text-lg text-gray-700 dark:text-gray-300 mb-3 line-clamp-2">{description}</p>
+ <div className="flex flex-wrap gap-1">
+ {tags.map((tag, i) => {
+ const colors = ['bg-indigo-300','bg-purple-300','bg-green-300' ];
+const color = colors[i % colors.length];
+ return (
+<span
+ key={i}
+ className={`text-xs font-bold ${color} text-black px-2 py-0.5 border border-black pixel-shadow-sm`}
+>
+ {tag}
+ </span>
+ );
+ })}
+ </div>
+    
+        {link && link !== '#' && (
+            <Link 
+                href={link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="mt-3 block text-center font-mono text-sm bg-indigo-500 text-white p-1 border-2 border-black pixel-shadow hover:bg-indigo-600"
+            >
+                Canlı Demo 
+            </Link>
+        )}
+ </div>
+</div>
+ );
 };
 
 export default ProjectCard;
