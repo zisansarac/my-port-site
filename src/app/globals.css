@@ -41,6 +41,7 @@ p {
   color: theme('colors.pink.400');
 }
 
+
 /* 4. HAMBURGER İKONU TEMEL STİLİ */
 .burger-line {
   @apply block w-6 h-0.5 my-1 bg-blue-400 transition duration-300 ease-in-out;

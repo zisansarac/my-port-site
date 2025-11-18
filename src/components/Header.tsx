@@ -7,19 +7,7 @@ import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi';
 import gsap from 'gsap';
 
-// Declare the custom element type for TypeScript
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'dotlottie-wc': {
-        src: string;
-        style?: React.CSSProperties;
-        autoplay?: boolean;
-        loop?: boolean;
-      };
-    }
-  }
-}
+
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -159,16 +147,11 @@ const Header = () => {
           <Link 
             ref={logoRef}
             href="/" 
-            className="font-mono text-text-accent text-3xl tracking-wider hover:text-kawaii-pink transition-colors duration-300 cursor-pointer"
+            className="font-mono text-text-accent text-3xl tracking-wider hover:text-pink-400 transition-colors duration-300 cursor-pointer"
           >
             <h2>Zişan Saraç</h2>
           </Link>
-          <dotlottie-wc 
-            src="https://lottie.host/18e4175c-1e4f-4933-9a71-92b36b3e0e79/lsogQeuU1p.lottie"
-            style={{ width: '64px', height: '64px' }}
-            autoplay
-            loop
-          />
+         
         </div>
         
         {/* Masaüstü Menüsü */}
@@ -184,7 +167,7 @@ const Header = () => {
                          relative overflow-hidden group"
             >
               <span className="relative z-10">{item.name}</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-kawaii-pink to-indigo-300 
+              <span className="absolute inset-0 bg-linear-to-r from-kawaii-pink to-indigo-300 
                              transform scale-x-0 group-hover:scale-x-100 transition-transform 
                              duration-300 origin-left rounded-full"></span>
             </Link>
@@ -211,7 +194,7 @@ const Header = () => {
         style={{ maxHeight: isOpen ? '500px' : '0' }}
       >
         <ul className="flex flex-col space-y-3 p-4">
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <li key={item.name}>
               <Link 
                 href={item.href} 

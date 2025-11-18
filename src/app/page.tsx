@@ -6,7 +6,6 @@ import Header from '@/components/Header';
 import SectionContainer from '@/components/SectionContainer';
 import { useScrollSnap } from '@/hooks/useScrollSnap';
 import { useFadeIn } from '@/hooks/useFadeIn';
-import { useTextReveal } from '@/hooks/useTextReveal';
 import { useFloatAnimation } from '@/hooks/useFloatAnimation';
 import { useMouseTrail } from '@/hooks/useMouseTrail';
 import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
@@ -16,7 +15,7 @@ import ProjectCard from '@/components/ProjectCard';
 import ContactForm from '@/components/ContactForm';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Link from 'next/link';
+
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -29,7 +28,6 @@ export default function Home() {
   const aboutTitleRef = useRef<HTMLHeadingElement>(null);
   const aboutTextRef = useFadeIn(0.2, 1, 30);
   const projectsTitleRef = useRef<HTMLHeadingElement>(null);
-  const projectsTextRef = useFadeIn(0.2, 1, 30);
   const contactTitleRef = useRef<HTMLHeadingElement>(null);
   const emojiRef = useFloatAnimation(2, 15);
   const catRef = useRef<HTMLDivElement>(null);
@@ -37,8 +35,21 @@ export default function Home() {
   const messageIndex = useRef(0); // Track which message to show next
   const skillsContainerRef = useStaggerAnimation(0.15, 0.2, { opacity: 0, y: 50, scale: 0.8 }, { opacity: 1, y: 0, scale: 1 });
   
-  // Optional: Enable mouse trail effect (set to false to disable)
+  //  Enable mouse trail effect (set to false to disable)
   useMouseTrail(true);
+
+  useEffect(() => {
+        if (typeof window !== 'undefined') {
+           
+            if (window.location.hash) {
+                
+                window.history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+            
+            
+            window.scrollTo(0, 0); 
+        }
+    }, []); 
 
   // Hero section animations
   useEffect(() => {
@@ -317,10 +328,9 @@ export default function Home() {
 
   return (
     <main className="relative overflow-hidden" ref={containerRef as any}>
-      {/* Animated Background */}
+   
       <AnimatedBackground />
       
-      {/* Header tüm sayfalarda üstte sabit kalır */}
       <Header />
       
       {/* 1. GİRİŞ/HERO Bölümü */}
@@ -330,10 +340,10 @@ export default function Home() {
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-lg sm:text-base flex-shrink-0">🎵</span>
+                <span className="text-lg sm:text-base shrink-0">🎵</span>
                 <p className="truncate text-lg">Merhaba.exe   °❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･</p>
               </div>
-              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
                   <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
                 </button>
@@ -352,13 +362,13 @@ export default function Home() {
                 <div className="text-center">
                   <h2 
                     ref={heroTitleRef}
-                    className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl mb-2 sm:mb-4 font-mono break-words"
+                    className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl mb-2 sm:mb-4 font-mono wrap-break-word"
                   >
                     Selam! Ben Zişan!
                   </h2>
                   <p 
                     ref={heroSubtitleRef}
-                    className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center text-black dark:text-white font-mono mb-4 sm:mb-8 px-2 break-words"
+                    className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-center text-black dark:text-white font-mono mb-4 sm:mb-8 px-2 wrap-break-word"
                   >
                     Full-Stack Web / Mobile Developer
                   </p>
@@ -406,10 +416,10 @@ export default function Home() {
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-sm sm:text-base flex-shrink-0">💖</span>
+                <span className="text-sm sm:text-base shrink-0">📁</span>
                 <span className="truncate">aboutMe.txt</span>
               </div>
-              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
                   <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
                 </button>
@@ -427,13 +437,13 @@ export default function Home() {
               <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
                 <h2 
                   ref={aboutTitleRef}
-                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white break-words"
+                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white wrap-break-word"
                 >
-                  About Me 💖
+                  About Me ⋆˚✿˖°
                 </h2>
                 <p 
                   ref={aboutTextRef as any}
-                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono break-words"
+                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
                 >
                   Merhaba! Ben bu dijital dünyanın yeni yaratıcısıyım. 2000lerin estetiği, parlak renkler ve yüksek interaktifliği birleştirerek özgün deneyimler tasarlamayı seviyorum.
                 </p>
@@ -451,10 +461,10 @@ export default function Home() {
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-sm sm:text-base flex-shrink-0">💖</span>
+                <span className="text-sm sm:text-base shrink-0">📁</span>
                 <span className="truncate">myTechStacks.txt</span>
               </div>
-              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
                   <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
                 </button>
@@ -472,13 +482,13 @@ export default function Home() {
               <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
                 <h2 
                   ref={aboutTitleRef}
-                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white break-words"
+                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white wrap-break-word"
                 >
-                  My Tech Stacks 💖
+                  My Tech Stacks ✮⋆˙
                 </h2>
                 <p 
                   ref={aboutTextRef as any}
-                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono break-words"
+                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
                 >
                   Merhaba! Ben bu dijital dünyanın yeni yaratıcısıyım. 2000lerin estetiği, parlak renkler ve yüksek interaktifliği birleştirerek özgün deneyimler tasarlamayı seviyorum.
                 </p>
@@ -506,13 +516,14 @@ export default function Home() {
       <SectionContainer id="projects" className='snap-section no-rounded-bg'>
         <div className="w-full flex justify-center items-center px-2 sm:px-4">
           <div className="w-full max-w-5xl mx-auto border-2 border-black dark:border-gray-500 bg-white/90 dark:bg-gray-800 pixel-shadow overflow-hidden">
+          
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-sm sm:text-base flex-shrink-0">📁</span>
+                <span className="text-sm sm:text-base shrink-0">📁</span>
                 <span className="truncate">myProjects.exe</span>
               </div>
-              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
                   <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
                 </button>
@@ -528,6 +539,13 @@ export default function Home() {
             {/* Content Area */}
             <div className="p-2 sm:p-4">
               <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
+              <h2 
+                  ref={aboutTitleRef}
+                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white wrap-break-word"
+                >
+                  My Projects ⋆˚꩜｡⋆
+                </h2>
+               
                 
 
                 {/* Project Cards Grid */}
@@ -570,10 +588,10 @@ export default function Home() {
             {/* Window Header */}
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-                <span className="text-sm sm:text-base flex-shrink-0">💌</span>
-                <span className="truncate">İletişim.exe</span>
+                <span className="text-sm sm:text-base shrink-0">💌</span>
+                <span className="truncate">contactMe.exe</span>
               </div>
-              <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+              <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
                   <span className="text-black dark:text-white text-[8px] sm:text-xs">−</span>
                 </button>
@@ -591,12 +609,12 @@ export default function Home() {
               <div className="bg-white/70 dark:bg-gray-900 border-2 border-black dark:border-gray-600 p-2 sm:p-4 pixel-shadow-inset overflow-hidden">
                 <h2 
                   ref={contactTitleRef}
-                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white text-center break-words"
+                  className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white text-center wrap-break-word"
                 >
-                  İletişim Kur! 💌
+                  Contact Me! 💌
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 text-center font-mono break-words px-2">
-                  Bir proje üzerinde çalışmak ister misiniz? Bana ulaşın!
+                <p className="text-lg sm:text-lg md:text-2xl text-black dark:text-white mb-4 sm:mb-8 text-center font-mono wrap-break-word px-2">
+                  Interested in working on a project? Contact me!
                 </p>
                 <ContactForm />
               </div>

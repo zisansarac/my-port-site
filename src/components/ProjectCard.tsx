@@ -106,10 +106,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 
  {/* GÖRSEL ALANI VE GİTHUB LİNKİ */}
  <Link 
-href={githubLink} // GitHub linki burada
+href={githubLink} 
 target="_blank" 
 rel="noopener noreferrer"
-className="block relative overflow-hidden w-full h-48 md:h-56 lg:h-64" // Genişlik ve Yükseklik ayarı
+className="block relative overflow-hidden w-full h-48 md:h-56 lg:h-64" 
  >
  {imageSrc ? (
  <img
@@ -119,8 +119,8 @@ className="block relative overflow-hidden w-full h-48 md:h-56 lg:h-64" // Geniş
     style={{ imageRendering: 'pixelated' }} 
  />
  ) : (
- // imageSrc boş ise gösterilecek yer tutucu
-<div className="w-full h-full bg-gradient-to-br from-pink-300 to-indigo-300 flex items-center justify-center">
+
+<div className="w-full h-full bg-linear-to-br from-pink-300 to-indigo-300 flex items-center justify-center">
 <span className="text-white font-mono p text-lg">No Image</span>
  </div>
  )}
