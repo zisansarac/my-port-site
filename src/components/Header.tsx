@@ -148,7 +148,7 @@ const Header = () => {
           <Link 
             ref={logoRef}
             href="/" 
-            className="text-text-accent text-3xl tracking-wider hover:text-pink-400 transition-colors duration-300 cursor-pointer"
+            className=" text-text-accent text-3xl tracking-wider hover:text-pink-400 transition-colors duration-300 cursor-pointer"
           >
             <h2>Zişan Saraç</h2>
           </Link>

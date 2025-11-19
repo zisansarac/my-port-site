@@ -557,7 +557,7 @@ export default function Home() {
                     title="dahlia's"
                     description="a modern and efficient order tracking application built to empower women entrepreneurs."
                     tags={['Flutter', 'Node.js', 'Express', 'MySQL']}
-                    link="#" imageSrc={'/images/menu.jpg'} githubLink={'https://github.com/zisansarac/dahliasApp'}                  />
+                    link="#" imageSrc={'/images/dahlias.jpg'} githubLink={'https://github.com/zisansarac/dahliasApp'}                  />
                   <ProjectCard
                     index={1}
                     title="Portfolio Sites"
@@ -569,7 +569,7 @@ export default function Home() {
                     title="GlowSphere"
                     description="a sleek and modern platform designed to illuminate your digital presence with creativity and innovation."
                     tags={['React', 'TypeScript', 'Tailwind CSS', 'Appwrite']}
-                    link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/glowsphere'}                  />
+                    link="#" imageSrc={'/images/glowsphere.png'} githubLink={'https://github.com/zisansarac/glowsphere'}                  />
                     <ProjectCard
                     index={3}
                     title="3D Web Portfolio"

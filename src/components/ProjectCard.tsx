@@ -136,14 +136,14 @@ className="block relative overflow-hidden w-full h-48 md:h-56 lg:h-64"
  <div className="p-3 bg-white dark:bg-gray-800 border-t-2 border-black dark:border-gray-500">
  <h3 className="font-mono text-2xl text-black dark:text-white mb-2 **truncate**">{title}</h3>
 <p className="text-lg text-gray-700 dark:text-gray-300 mb-3 line-clamp-2">{description}</p>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-1 ">
  {tags.map((tag, i) => {
  const colors = ['bg-indigo-300','bg-purple-300','bg-green-300' ];
 const color = colors[i % colors.length];
  return (
 <span
  key={i}
- className={`text-xs font-bold ${color} text-black px-2 py-0.5 border border-black pixel-shadow-sm`}
+ className={`text-s font-bold ${color} text-black px-2 py-0.5 border border-black pixel-shadow-sm`}
 >
  {tag}
  </span>
