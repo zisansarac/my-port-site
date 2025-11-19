@@ -561,7 +561,7 @@ export default function Home() {
                   <ProjectCard
                     index={1}
                     title="Portfolio Sites"
-                    description="Full-stack e-ticaret uygulaması. Modern UI/UX ve güvenli ödeme entegrasyonu."
+                    description="a full-stack portfolio blog site."
                     tags={['React', '.NET', 'SQLite']}
                     link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/PortfolioSites'}                  />
                   <ProjectCard
