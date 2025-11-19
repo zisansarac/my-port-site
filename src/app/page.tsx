@@ -34,7 +34,7 @@ export default function Home() {
   const catRef = useRef<HTMLDivElement>(null);
   const isBubbleShowing = useRef(false); // Track if bubble is showing
   const messageIndex = useRef(0); // Track which message to show next
-  const skillsContainerRef = useStaggerAnimation(0.15, 0.2, { opacity: 0, y: 50, scale: 0.8 }, { opacity: 1, y: 0, scale: 1 });
+  const skillsContainerRef = useStaggerAnimation(0.15, 0.2, { opacity: 0, y: 50, scale: 1 }, { opacity: 1, y: 0, scale: 1 });
   
   //  Enable mouse trail effect (set to false to disable)
   useMouseTrail(true);
@@ -365,7 +365,7 @@ export default function Home() {
                     ref={heroTitleRef}
                     className="text-5xl sm:text-5xl md:text-6xl lg:text-8xl mb-2 sm:mb-4 font-mono wrap-break-word"
                   >
-                    Selam! Ben Zişan!
+                    Hi! I&apos;m Zişan!
                   </h2>
                   <p 
                     ref={heroSubtitleRef}
@@ -387,7 +387,8 @@ export default function Home() {
                         height: '250px', 
                         cursor: 'pointer', 
                         position: 'relative',
-                        zIndex: 20
+                        zIndex: 20,
+                        
                       }}
                     >
                       <span
@@ -418,7 +419,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base shrink-0">📁</span>
-                <span className="truncate">aboutMe.txt</span>
+                <span className="truncate text-lg">aboutMe.txt</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -440,13 +441,13 @@ export default function Home() {
                   ref={aboutTitleRef}
                   className="text-3xl sm:text-4xl md:text-5xl mb-4 sm:mb-6 font-mono text-black dark:text-white wrap-break-word"
                 >
-                  About Me ⋆˚✿˖°
+                  About Me ⋆˚˖°
                 </h2>
                 <p 
                   ref={aboutTextRef as any}
-                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
+                  className="text-xl sm:text-base md:text-2xl text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
                 >
-                  Merhaba! Ben bu dijital dünyanın yeni yaratıcısıyım. 2000lerin estetiği, parlak renkler ve yüksek interaktifliği birleştirerek özgün deneyimler tasarlamayı seviyorum.
+                  I have a bachelor&apos;s degree in Computer Engineering from Suleyman Demirel University. I live in Konya, Turkiye.  During my education, I was particularly interested in web development and user interface design. My interest in design and art supports my problem-solving and creative thinking skills. I aim to improve my competencies in the software field by learning new technologies and contributing to teamwork.
                 </p>
                 
                 
@@ -463,7 +464,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base shrink-0">📁</span>
-                <span className="truncate">myTechStacks.txt</span>
+                <span className="truncate text-lg">myTechStacks.txt</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -489,9 +490,9 @@ export default function Home() {
                 </h2>
                 <p 
                   ref={aboutTextRef as any}
-                  className="text-sm sm:text-base md:text-lg text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
+                  className="text-lg sm:text-base md:text-xl text-black dark:text-white mb-4 sm:mb-8 font-mono wrap-break-word"
                 >
-                  Merhaba! Ben bu dijital dünyanın yeni yaratıcısıyım. 2000lerin estetiği, parlak renkler ve yüksek interaktifliği birleştirerek özgün deneyimler tasarlamayı seviyorum.
+                  the technologies I use most
                 </p>
                 
                 {/* Skill Cards */}
@@ -501,7 +502,7 @@ export default function Home() {
                 >
                   <SkillCard skill="React/Next.js" level={90} icon="" color="pink" />
                   <SkillCard skill="TypeScript" level={90} icon="" color="indigo" />
-                  <SkillCard skill="Tailwind & GSAP Animations" level={80} icon="" color="purple" />
+                  <SkillCard skill="Tailwind & GSAP" level={80} icon="" color="purple" />
                   <SkillCard skill=".NET" level={70} icon="" color="pink" />
                   <SkillCard skill="Node.js" level={75} icon="" color="indigo" />
                   <SkillCard skill="Mobile Dev" level={40} icon="" color="purple" />
@@ -522,7 +523,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base shrink-0">📁</span>
-                <span className="truncate">myProjects.exe</span>
+                <span className="truncate text-lg">myProjects.exe</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">
@@ -590,7 +591,7 @@ export default function Home() {
             <header className="flex items-center justify-between bg-indigo-600 dark:bg-gray-700 p-1.5 sm:p-2 text-white font-mono text-[10px] sm:text-xs">
               <div className="flex items-center gap-1 sm:gap-2 min-w-0">
                 <span className="text-sm sm:text-base shrink-0">💌</span>
-                <span className="truncate">contactMe.exe</span>
+                <span className="truncate text-lg">contactMe.exe</span>
               </div>
               <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
                 <button className="w-4 h-4 sm:w-5 sm:h-5 bg-white dark:bg-gray-600 border-2 border-black dark:border-gray-500 flex items-center justify-center pixel-shadow-sm hover:bg-gray-200">

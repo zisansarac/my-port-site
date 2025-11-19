@@ -148,7 +148,7 @@ const Header = () => {
           <Link 
             ref={logoRef}
             href="/" 
-            className="font-mono text-text-accent text-3xl tracking-wider hover:text-pink-400 transition-colors duration-300 cursor-pointer"
+            className="text-text-accent text-3xl tracking-wider hover:text-pink-400 transition-colors duration-300 cursor-pointer"
           >
             <h2>Zişan Saraç</h2>
           </Link>
@@ -168,7 +168,7 @@ const Header = () => {
                          relative overflow-hidden group"
                                        
             >
-              <span className="relative z-10 text-xl text-indigo-800">{item.name}</span>
+              <span className="relative z-10 text-xl text-white">{item.name}</span>
               <span className="absolute inset-0 bg-linear-to-r from-pink-400 to-indigo-300 
                              transform scale-x-0 group-hover:scale-x-100 transition-transform 
                              duration-300 origin-left rounded-full"></span>

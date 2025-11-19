@@ -36,10 +36,10 @@ export const useStaggerAnimation = (
         duration: 0.8,
         delay: delay,
         stagger: stagger,
-        ease: 'power3.out',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: element,
-          start: 'top 80%',
+          start: 'top 70%',
           toggleActions: 'play none none reverse',
         },
       }
