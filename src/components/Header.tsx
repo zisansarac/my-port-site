@@ -42,8 +42,8 @@ const Header = () => {
     
     const handleMouseEnter = () => {
       gsap.to(logo, {
-        scale: 1.1,
-        rotation: 5,
+        scale: 1.0,
+        rotation: 1,
         duration: 0.3,
         ease: 'back.out(1.7)'
       });
@@ -53,8 +53,9 @@ const Header = () => {
       gsap.to(logo, {
         scale: 1,
         rotation: 0,
-        duration: 0.3,
-        ease: 'power2.out'
+        duration: 0.6,
+        ease: 'elastic.out(5, 0.5)'
+        
       });
     };
 
@@ -162,12 +163,13 @@ const Header = () => {
               ref={(el) => { menuItemsRef.current[index] = el; }}
               href={item.href}
               onClick={(e) => handleNavClick(e, index)}
-              className="px-4 py-2 bg-pink-300 text-white rounded-full 
-                         hover:bg-indigo-300 transition-all duration-300 font-mono shadow-md
+              className="px-4 py-2 bg-pink-400 text-white rounded-full 
+                         hover:bg-indigo-300 transition-all duration-300 shadow-md
                          relative overflow-hidden group"
+                                       
             >
-              <span className="relative z-10">{item.name}</span>
-              <span className="absolute inset-0 bg-linear-to-r from-kawaii-pink to-indigo-300 
+              <span className="relative z-10 text-xl text-indigo-800">{item.name}</span>
+              <span className="absolute inset-0 bg-linear-to-r from-pink-400 to-indigo-300 
                              transform scale-x-0 group-hover:scale-x-100 transition-transform 
                              duration-300 origin-left rounded-full"></span>
             </Link>
@@ -190,7 +192,7 @@ const Header = () => {
 
       {/* Mobil Açılır Menü */}
       <nav 
-        className="mobile-nav md:hidden absolute top-full left-0 w-full bg-bg-primary overflow-hidden"
+        className="mobile-nav md:hidden absolute top-full left-0 w-full bg-transparent overflow-hidden"
         style={{ maxHeight: isOpen ? '500px' : '0' }}
       >
         <ul className="flex flex-col space-y-3 p-4">
@@ -203,7 +205,7 @@ const Header = () => {
                            rounded-lg bg-indigo-200 hover:bg-indigo-300 transition-colors 
                            duration-300 transform hover:scale-105"
               >
-                <p>{item.name}</p>
+                <p className='text-xl text-pink-500'>{item.name}</p>
               </Link>
             </li>
           ))}

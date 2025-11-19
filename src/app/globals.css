@@ -28,11 +28,19 @@ body {
   color: theme('colors.gray.100'); 
 }
 
+
+
 /* 3. BAŞLIK FONTU (Pixel Art Etkisi) */
 h1, h2, h3, h4 {
   font-family: 'Pixel-Kawaii', sans-serif;
   font-weight: 500; 
   color: theme('colors.indigo.500');
+}
+
+span, button {
+  font-family: 'Pixel-Kawaii', sans-serif;
+  font-weight: 400;
+
 }
 
 p {

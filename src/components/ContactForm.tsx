@@ -225,13 +225,13 @@ const ContactForm = () => {
                 <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-8 py-4 bg-pink-300 border-2 border-black dark:border-gray-500 pixel-shadow text-black font-mono text-xl hover:bg-pink-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-8 py-4 bg-indigo-500 border-2 border-black dark:border-gray-500 pixel-shadow text-white text-2xl hover:bg-pink-400 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     {isSubmitting ? 'Sending... ✨' : 'Send 💌'}
                 </button>
             </form>
 
-            {/* 2. PİXEL STİLİNDE MODAL POP-UP */}
+          
             {showModal && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm" onClick={closeModal}>
                     <div 

@@ -15,6 +15,7 @@ import ProjectCard from '@/components/ProjectCard';
 import ContactForm from '@/components/ContactForm';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 
 if (typeof window !== 'undefined') {
@@ -623,6 +624,63 @@ export default function Home() {
         </div>
       </SectionContainer>
 
-    </main>
-  );
+
+ <footer 
+ className="w-full py-4 sm:py-8  dark:bg-gray-700  text-center 
+ border-t-4 border-pink-400"
+ >
+ <div className="max-w-7xl mx-auto px-8 sm:px-6 lg:px-9">
+ 
+ <p className="text-white text-lg sm:text-base font-retro tracking-wider pixel-shadow-sm inline-block px-2 py-0.5 bg-black/10">
+ © {new Date().getFullYear()} Zişan Saraç. ALL RIGHTS RESERVED.
+ </p>
+ 
+ {/* Sosyal Medya Linkleri */}
+ <div className="flex justify-center space-x-4 mt-4">
+ {/* GitHub Linki */}
+ <Link 
+ href="https://github.com/zisansarac" 
+ target="_blank" 
+className="text-white hover:text-pink-400 transition-colors duration-200 
+ pixel-shadow-sm p-1.5 rounded-md bg-black/20 hover:bg-black/30 transform hover:scale-110"
+ aria-label="GitHub Profile"
+ >
+<svg className="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+ <path 
+ fillRule="evenodd" 
+ d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.111.82-.258.82-.577 0-.285-.011-1.04-.017-2.04-3.344.726-4.042-1.61-4.042-1.61-.546-1.387-1.332-1.758-1.332-1.758-1.09-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.493.998.108-.776.419-1.305.762-1.605-2.665-.304-5.467-1.333-5.467-5.932 0-1.31.465-2.38.123-3.22-.123-.314-.533-1.523.123-3.176 0 0 1.008-.322 3.3-.319 1.025-.283 2.115-.425 3.206-.425.008 0 .016 0 .023 0 1.09.008 2.18.15 3.207.425 2.29-.003 3.298.319 3.298.319.656 1.653.246 2.862.123 3.176-.343.84-.123 1.91.123 3.22 0 4.609-2.807 5.624-5.479 5.922.429.37.818 1.092.818 2.203 0 1.604-.014 2.895-.014 3.284 0 .323.218.69.829.575C20.562 21.802 24 17.302 24 12c0-6.627-5.373-12-12-12z"
+ />
+ </svg>
+ </Link>
+ 
+
+ <Link 
+ href="https://www.linkedin.com/in/zisansarac" 
+target="_blank" 
+className="text-white hover:text-pink-400 transition-colors duration-200 
+ pixel-shadow-sm p-1.5 rounded-md bg-black/20 hover:bg-black/30 transform hover:scale-110"
+aria-label="LinkedIn Profile"
+ >
+ <svg className="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+ <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.364-4-3.359-4 0v5.604h-3v-11h3v1.765c1.395-2.544 7-2.358 7 3.543v5.692z"/>
+ </svg>
+ </Link>
+
+ <Link 
+ href="https://www.instagram.com/zisansarac" 
+target="_blank" 
+ className="text-white hover:text-pink-400 transition-colors duration-200 
+ pixel-shadow-sm p-1.5 rounded-md bg-black/20 hover:bg-black/30 transform hover:scale-110"
+ aria-label="Instagram Profile"
+ >
+ <svg className="w-7 h-7 inline-block" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+ <path d="M12 2.163c3.204 0 3.584.013 4.85.07c3.27.14 4.807 1.644 4.947 4.947.057 1.266.07 1.646.07 4.85s-.013 3.584-.07 4.85c-.14 3.27-1.644 4.807-4.947 4.947-1.266.057-1.646.07-4.85.07s-3.584-.013-4.85-.07c-3.27-.14-4.807-1.644-4.947-4.947-.057-1.266-.07-1.646-.07-4.85s.013-3.584.07-4.85c.14-3.27 1.644-4.807 4.947-4.947 1.266-.057 1.646-.07 4.85-.07zm0 2.138c-3.14 0-3.486.012-4.72.067-2.61.11-3.693 1.193-3.803 3.803-.055 1.234-.067 1.58-.067 4.72s.012 3.486.067 4.72c.11 2.61 1.193 3.693 3.803 3.803 1.234.055 1.58.067 4.72.067s3.486-.012 4.72-.067c2.61-.11 3.693-1.193 3.803-3.803.055-1.234.067-1.58.067-4.72s-.012-3.486-.067-4.72c-.11-2.61-1.193-3.693-3.803-3.803-1.234-.055-1.58-.067-4.72-.067zm0 1.815a5.5 5.5 0 100 11 5.5 5.5 0 000-11zm0 2.138a3.362 3.362 0 110 6.724 3.362 3.362 0 010-6.724zm6.096-3.883a1.272 1.272 0 100 2.544 1.272 1.272 0 000-2.544z"/>
+ </svg>
+ </Link>
+ </div>
+ </div>
+ </footer>
+ </main>
+ );
 }
+       
