@@ -180,12 +180,15 @@ const Header = () => {
         </nav>
 
         <div 
-            className="hidden md:block relative pt-2" 
+            // KRİTİK ÇÖZÜM: 'group' class'ı eklenerek hover etkileşimi tüm div'e yayılır.
+            // pt-2'yi kaldırıp, menünün hemen alta bitişmesini sağlıyoruz.
+            className="hidden md:block relative group" 
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
         >
             <button 
-                className="px-6 py-2 bg-text-accent text-white font-pixel rounded-full text-xl 
+                // Ana butonun stili güncellendi: Daha kompakt, yine 'pixel-shadow'lu
+                className="px-4 py-2 bg-text-accent text-white font-pixel rounded-md text-xl 
                            shadow-md border-2 border-white/50 pixel-shadow 
                            hover:bg-indigo-600 transition-all duration-150 ease-in-out"
                 aria-label="Download CV Options"
@@ -193,18 +196,19 @@ const Header = () => {
                 Download my CV
             </button>
 
+
             {isDropdownOpen && (
                 <div 
-                    className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 
+                    className="absolute right-0 w-36 bg-white dark:bg-gray-800 
                                pixel-shadow border-2 border-black dark:border-gray-500 
-                               rounded-md overflow-hidden z-50"
+                               rounded-md overflow-hidden z-50 text-base"
                 >
                     <Link
                         href={CV_TR_PATH}
                         download
                         onClick={() => setIsDropdownOpen(false)}
-                        className="block px-4 py-2 text-text-default dark:text-gray-200 
-                                   font-pixel text-lg hover:bg-pink-400 hover:text-white transition-colors"
+                        className="block px-3 py-1.5 text-text-default dark:text-gray-200 
+                                   font-pixel hover:bg-pink-400 transition-colors hover:text-white"
                     >
                         TR
                     </Link>
@@ -212,11 +216,10 @@ const Header = () => {
                         href={CV_EN_PATH}
                         download
                         onClick={() => setIsDropdownOpen(false)}
-                        className="block px-4 py-2 text-text-default dark:text-gray-200 
-                                   font-pixel text-lg hover:bg-pink-400 hover:text-white transition-colors border-t border-gray-300 dark:border-gray-700"
-      
+                        className="block px-3 py-1.5 text-text-default dark:text-gray-200 
+                                   font-pixel hover:bg-pink-400 transition-colors hover:text-white border-t border-gray-300 dark:border-gray-700"
                     >
-                         ENG
+                        ENG
                     </Link>
                 </div>
             )}
@@ -258,34 +261,46 @@ const Header = () => {
             </li>
           ))}
           <li className="pt-4 flex flex-col space-y-2">
-            <p className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
-                          rounded-lg bg-indigo-200 text-pink-500 font-pixel">
-                 Download CV 📄
+            
+           
+            <p 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)} // 
+                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
+                           rounded-lg bg-indigo-200 hover:bg-indigo-300 transition-colors 
+                           duration-300 transform hover:scale-105 font-pixel text-pink-500 cursor-pointer"
+            >
+                Download my CV
             </p>
+            
+          
+            {isDropdownOpen && (
+                <div className="flex flex-col space-y-2 ml-4">
+                    
+               
+                    <Link
+                        href={CV_TR_PATH}
+                        download 
+                        onClick={() => setIsOpen(false)} 
+                        className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
+                                   rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
+                                   duration-300 transform hover:scale-105"
+                    >
+                        <p className='text-xl text-pink-500'>TR</p>
+                    </Link>
 
-  
-            <Link
-                href={CV_TR_PATH}
-                download 
-                onClick={() => setIsOpen(false)} 
-                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 ml-4 
-                           rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
-                           duration-300 transform hover:scale-105"
-            >
-                <p className='text-xl text-pink-500'>TR</p>
-            </Link>
-
-            <Link
-                href={CV_EN_PATH}
-                download 
-                onClick={() => setIsOpen(false)} 
-         
-                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 ml-4 
-                           rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
-                           duration-300 transform hover:scale-105"
-            >
-                <p className='text-xl text-pink-500'>ENG</p>
-            </Link>
+                   
+                    <Link
+                        href={CV_EN_PATH}
+                        download 
+                        onClick={() => setIsOpen(false)} 
+                        className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
+                                   rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
+                                   duration-300 transform hover:scale-105"
+                    >
+                        <p className='text-xl text-pink-500'>ENG</p>
+                    </Link>
+                </div>
+            )}
           </li>
         </ul>
       </nav>
