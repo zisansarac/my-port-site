@@ -180,12 +180,12 @@ const Header = () => {
         </nav>
 
         <div 
-            className="hidden md:block relative" 
+            className="hidden md:block relative pt-2" 
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
         >
             <button 
-                className="px-6 py-2 bg-text-accent text-white font-pixel rounded-md text-xl 
+                className="px-6 py-2 bg-text-accent text-white font-pixel rounded-full text-xl 
                            shadow-md border-2 border-white/50 pixel-shadow 
                            hover:bg-indigo-600 transition-all duration-150 ease-in-out"
                 aria-label="Download CV Options"
@@ -204,7 +204,7 @@ const Header = () => {
                         download
                         onClick={() => setIsDropdownOpen(false)}
                         className="block px-4 py-2 text-text-default dark:text-gray-200 
-                                   font-pixel text-lg hover:bg-pink-400 hover:text-white"
+                                   font-pixel text-lg hover:bg-pink-400 hover:text-white transition-colors"
                     >
                         TR
                     </Link>
@@ -213,7 +213,8 @@ const Header = () => {
                         download
                         onClick={() => setIsDropdownOpen(false)}
                         className="block px-4 py-2 text-text-default dark:text-gray-200 
-                                   font-pixel text-lg hover:bg-pink-400 hover:text-white border-t border-gray-300 dark:border-gray-700"
+                                   font-pixel text-lg hover:bg-pink-400 hover:text-white transition-colors border-t border-gray-300 dark:border-gray-700"
+      
                     >
                          ENG
                     </Link>
@@ -257,25 +258,33 @@ const Header = () => {
             </li>
           ))}
           <li className="pt-4 flex flex-col space-y-2">
+            <p className="block text-text-default hover:text-text-accent text-xl py-2 px-4 
+                          rounded-lg bg-indigo-200 text-pink-500 font-pixel">
+                 Download CV 📄
+            </p>
+
+  
             <Link
                 href={CV_TR_PATH}
                 download 
                 onClick={() => setIsOpen(false)} 
-                className="block text-center text-xl py-2 px-4 
-                           rounded-lg bg-text-accent hover:bg-indigo-600 transition-colors 
-                           duration-300 transform hover:scale-105 font-pixel text-white pixel-shadow-sm"
+                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 ml-4 
+                           rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
+                           duration-300 transform hover:scale-105"
             >
-                Download CV (TR)
+                <p className='text-xl text-pink-500'>TR</p>
             </Link>
+
             <Link
                 href={CV_EN_PATH}
                 download 
                 onClick={() => setIsOpen(false)} 
-                className="block text-center text-xl py-2 px-4 
-                           rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-colors 
-                           duration-300 transform hover:scale-105 font-pixel text-white pixel-shadow-sm"
+         
+                className="block text-text-default hover:text-text-accent text-xl py-2 px-4 ml-4 
+                           rounded-lg bg-indigo-100 hover:bg-indigo-300 transition-colors 
+                           duration-300 transform hover:scale-105"
             >
-                Download CV (ENG)
+                <p className='text-xl text-pink-500'>ENG</p>
             </Link>
           </li>
         </ul>
