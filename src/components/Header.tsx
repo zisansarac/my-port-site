@@ -180,14 +180,11 @@ const Header = () => {
         </nav>
 
         <div 
-            // KRİTİK ÇÖZÜM: 'group' class'ı eklenerek hover etkileşimi tüm div'e yayılır.
-            // pt-2'yi kaldırıp, menünün hemen alta bitişmesini sağlıyoruz.
-            className="hidden md:block relative group" 
+            className="hidden md:block relative group pb-6" 
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
         >
             <button 
-                // Ana butonun stili güncellendi: Daha kompakt, yine 'pixel-shadow'lu
                 className="px-4 py-2 bg-text-accent text-white font-pixel rounded-md text-xl 
                            shadow-md border-2 border-white/50 pixel-shadow 
                            hover:bg-indigo-600 transition-all duration-150 ease-in-out"
@@ -199,7 +196,7 @@ const Header = () => {
 
             {isDropdownOpen && (
                 <div 
-                    className="absolute right-0 w-36 bg-white dark:bg-gray-800 
+                    className="absolute right-0  mt-2 w-36 bg-white dark:bg-gray-800 
                                pixel-shadow border-2 border-black dark:border-gray-500 
                                rounded-md overflow-hidden z-50 text-base"
                 >
@@ -207,6 +204,7 @@ const Header = () => {
                         href={CV_TR_PATH}
                         download
                         onClick={() => setIsDropdownOpen(false)}
+                        style={{ fontFamily: 'Pixel-Kawaii, sans-serif' }}
                         className="block px-3 py-1.5 text-text-default dark:text-gray-200 
                                    font-pixel hover:bg-pink-400 transition-colors hover:text-white"
                     >
@@ -216,6 +214,7 @@ const Header = () => {
                         href={CV_EN_PATH}
                         download
                         onClick={() => setIsDropdownOpen(false)}
+                        style={{ fontFamily: 'Pixel-Kawaii, sans-serif' }}
                         className="block px-3 py-1.5 text-text-default dark:text-gray-200 
                                    font-pixel hover:bg-pink-400 transition-colors hover:text-white border-t border-gray-300 dark:border-gray-700"
                     >
@@ -225,7 +224,6 @@ const Header = () => {
             )}
         </div>
 
-        
 
         {/* Mobil Hamburger Butonu */}
         <button 
