@@ -196,7 +196,7 @@ const Header = () => {
 
             {isDropdownOpen && (
                 <div 
-                    className="absolute right-0  mt-2 w-36 bg-white dark:bg-gray-800 
+                    className="absolute right-0 -mt-0.5 w-36 bg-white dark:bg-gray-800 
                                pixel-shadow border-2 border-black dark:border-gray-500 
                                rounded-md overflow-hidden z-50 text-base"
                 >
