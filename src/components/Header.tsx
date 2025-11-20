@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi';
 import gsap from 'gsap';
 
+const CV_TR_PATH = "/Zisan_Sarac_CV_TR.pdf";
+const CV_EN_PATH = "/Zisan_Sarac_CV_EN.pdf";
 
 
 const Header = () => {
@@ -15,6 +17,7 @@ const Header = () => {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const menuItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const menuItems = [
     { name: 'About Me', href: '#about' },
@@ -176,6 +179,50 @@ const Header = () => {
           ))}
         </nav>
 
+        <div 
+            className="hidden md:block relative" 
+            onMouseEnter={() => setIsDropdownOpen(true)}
+            onMouseLeave={() => setIsDropdownOpen(false)}
+        >
+            <button 
+                className="px-6 py-2 bg-text-accent text-white font-pixel rounded-md text-xl 
+                           shadow-md border-2 border-white/50 pixel-shadow 
+                           hover:bg-indigo-600 transition-all duration-150 ease-in-out"
+                aria-label="Download CV Options"
+            >
+                Download my CV
+            </button>
+
+            {isDropdownOpen && (
+                <div 
+                    className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 
+                               pixel-shadow border-2 border-black dark:border-gray-500 
+                               rounded-md overflow-hidden z-50"
+                >
+                    <Link
+                        href={CV_TR_PATH}
+                        download
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="block px-4 py-2 text-text-default dark:text-gray-200 
+                                   font-pixel text-lg hover:bg-pink-400 hover:text-white"
+                    >
+                        TR
+                    </Link>
+                    <Link
+                        href={CV_EN_PATH}
+                        download
+                        onClick={() => setIsDropdownOpen(false)}
+                        className="block px-4 py-2 text-text-default dark:text-gray-200 
+                                   font-pixel text-lg hover:bg-pink-400 hover:text-white border-t border-gray-300 dark:border-gray-700"
+                    >
+                         ENG
+                    </Link>
+                </div>
+            )}
+        </div>
+
+        
+
         {/* Mobil Hamburger Butonu */}
         <button 
           className="md:hidden text-text-accent p-1 rounded-md shadow-2000s 
@@ -209,6 +256,28 @@ const Header = () => {
               </Link>
             </li>
           ))}
+          <li className="pt-4 flex flex-col space-y-2">
+            <Link
+                href={CV_TR_PATH}
+                download 
+                onClick={() => setIsOpen(false)} 
+                className="block text-center text-xl py-2 px-4 
+                           rounded-lg bg-text-accent hover:bg-indigo-600 transition-colors 
+                           duration-300 transform hover:scale-105 font-pixel text-white pixel-shadow-sm"
+            >
+                Download CV (TR)
+            </Link>
+            <Link
+                href={CV_EN_PATH}
+                download 
+                onClick={() => setIsOpen(false)} 
+                className="block text-center text-xl py-2 px-4 
+                           rounded-lg bg-indigo-500 hover:bg-indigo-600 transition-colors 
+                           duration-300 transform hover:scale-105 font-pixel text-white pixel-shadow-sm"
+            >
+                Download CV (ENG)
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
