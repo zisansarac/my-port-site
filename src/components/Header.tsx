@@ -180,7 +180,7 @@ const Header = () => {
         </nav>
 
         <div 
-            className="hidden md:block relative group pb-6" 
+            className="hidden md:block relative group" 
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
         >
