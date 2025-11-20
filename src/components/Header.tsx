@@ -8,7 +8,7 @@ import { HiMenu, HiX } from 'react-icons/hi';
 import gsap from 'gsap';
 
 const CV_TR_PATH = "/Zisan_Sarac_CV_TR.pdf";
-const CV_EN_PATH = "/Zisan_Sarac_CV_EN.pdf";
+const CV_EN_PATH = "/Zisan_Sarac_CV_ENG.pdf";
 
 
 const Header = () => {
