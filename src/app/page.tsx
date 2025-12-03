@@ -575,7 +575,7 @@ export default function Home() {
                     title="3D Web Portfolio"
                     description="a interactive 3D Dev Portfolio a modern, animated and fully responsive experience built using React, Three.js, and GSAP."
                     tags={['React', 'Three.js', 'GSAP']}
-                    link="#" imageSrc={''} githubLink={'https://github.com/zisansarac/3D-Web-Portfolio'}                  />
+                    link="#" imageSrc={'/images/3d.png'} githubLink={'https://github.com/zisansarac/3D-Web-Portfolio'}                  />
                 </div>
               </div>
             </div>
