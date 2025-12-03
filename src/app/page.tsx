@@ -568,8 +568,8 @@ export default function Home() {
                     index={2}
                     title="GlowSphere"
                     description="a sleek and modern platform designed to illuminate your digital presence with creativity and innovation."
-                    tags={['React', 'TypeScript', 'Tailwind CSS', 'Appwrite']}
-                    link="#" imageSrc={'/images/glowsphere.png'} githubLink={'https://github.com/zisansarac/glowsphere'}                  />
+                    tags={['React', 'TypeScript', 'Tailwind CSS', 'Node.js','MongoDB']}
+                    link="#" imageSrc={'/images/glowsphere.png'} githubLink={'https://github.com/zisansarac/GlowSphere_2.0'}                  />
                     <ProjectCard
                     index={3}
                     title="3D Web Portfolio"
